@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			background-color: #ddbb91;
+    background-image: -moz-linear-gradient(0deg, rgba(255, 255, 255, .3) 50%, transparent 50%, transparent);
+    background-image: -o-linear-gradient(0deg, rgba(255, 255, 255, .3) 50%, transparent 50%, transparent);
+    background-image: linear-gradient(0deg, rgba(255, 255, 255, .3) 50%, transparent 50%, transparent);
+    -webkit-background-size: 100px 100px;
+    background-size: 100px 100px;
+		}
+		.canvas-box {
+			position: relative;
+			margin: 80px auto 0;
+		}
+		#chessboard {
+		    display: block;
+		    box-shadow: 0 0 12px 3px #666;
+		}
+		#chess {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			cursor: pointer;
+		}
+		.hide{
+			display: none !important;
+		}
+		#laybox {
+			position: fixed;
+			text-align: center;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 2;
+			background: rgba(0, 0, 0, 0.5);
+			user-select: none;
+		}
+		#push {
+			font-size: 36px;
+			font-weight: 600;
+			letter-spacing: 1em;
+			color: #fff;
+			text-shadow: 5px 5px 5px #ccc;
+			margin-top: 200px;
+			margin-bottom: 80px;
+		}
+		
+		.btn {
+			display: inline-block;
+			line-height: 1px;
+			padding: 20px 0;
+			width: 124px;
+			text-align: center;
+			color: #fff;
+			border-radius: 20px;
+			cursor: pointer;
+		}
+		.btn-active {
+			background: #f52f3e;
+		}
+		.btn-die {
+			background: #aaa;
+			cursor: not-allowed;
+		}
+		.regret {
+			position: absolute;
+			top: 20%;
+			right: 50px;
+			z-index: 1;
+		}
+		.regret .btn {
+			display: block;
+			margin-top: 40px;
+		}
+		.show {
+			animation: shows 1s;
+		}
+		@keyframes shows
+			{
+			from {opacity: 0;transform: translateY(-200px)}
+			to {opacity: 1;transform: translateY(0)}
+			}
+	</style>
+</head>
+<body>
+	<div id="laybox" class="hide">
+		<p id="push"></p>
+		<span class="btn btn-active" onclick="location.reload();">再来一局</span>
+	</div>
+	<div class="regret">
+		<span class="btn btn-active" onclick="location.reload();">重新开始</span>
+		<span class="btn btn-die" id="undo">悔&nbsp;&nbsp;棋</span>
+		<span class="btn btn-active hide" id="unundo">撤销悔棋</span>
+	</div>
+
+	<div class="canvas-box">
+		<canvas id="chessboard"></canvas>
+		<canvas id="chess"></canvas>
+	</div>
+	
+	<script>
+	(function() {
+		const cboard = document.getElementById("chessboard"); //棋盘
+		const canvas = document.getElementById("chess"); //棋子
+		const laybox = document.getElementById("laybox"); //游戏结束弹窗
+		const push = document.getElementById("push"); //没啥用
+		const undo = document.getElementById("undo"); //撤销
+		const unundo = document.getElementById("unundo"); // 撤撤销
+
+		const context = canvas.getContext("2d"); // 我是棋盘
+		context.fillStyle = 'rgba(255, 255, 255, 0)';
+
+		// 通用函数
+		const util = {
+			getWidth() { //确定画布大小
+				return (window.screen.height - 80 > document.body.offsetWidth) ? document.body.offsetWidth * 0.75 : (window.screen.height - 80) * 0.75;
+			},
+			drawChessman(i, j, me) { //i,j定位，me代表玩家
+				var pos = status.pos,
+					gradient = context.createRadialGradient(pos / 2 + i * pos + 2, pos / 2 + j * pos - 2, pos * 0.4, pos / 2 + i * pos, pos / 2 + j * pos, 0);
+				context.beginPath();
+				context.arc(pos / 2 + i * pos, pos / 2 + j * pos, pos * 0.4, 0, 2 * Math.PI);
+				context.closePath();
+
+				if (me) {
+					gradient.addColorStop(0, "#0a0a0a");
+					gradient.addColorStop(1, "#636766");
+				} else {
+					gradient.addColorStop(0, "#D1D1D1");
+					gradient.addColorStop(1, "#F9F9F9");
+				}
+				context.fillStyle = gradient;
+				context.fill();
+			},
+			clearChess(i, j) { // 删除画布上的棋子
+				var pos = status.pos
+				context.clearRect(pos * 0.1 + i * pos, pos * 0.1 + j * pos, pos * 0.8, pos * 0.8);
+				status.chressBord[i][j] = 0;
+				status.player = !status.player;
+				status.over = false;
+				unundo.classList.remove('hide');
+				undo.classList.add('btn-die');
+				undo.classList.remove('btn-active');
+			},
+			getChressBord() {
+				var chressBord = []
+				for (var i = 0; i < 15; i++) {
+					chressBord[i] = [];
+					for (var j = 0; j < 15; j++) {
+						chressBord[i][j] = 0;
+					}
+				}
+				return chressBord
+			},
+			gameover() { // 游戏结束
+				status.over = true
+				setTimeout(function() {
+					var pl = status.player == false ? 1 : 2;
+					console.log(pl)
+					push.innerText = '玩家' + pl + '获得胜利';
+					laybox.classList.remove('hide');
+					push.classList.add('show');
+				}, 0, status.player)
+			},
+			showBtn() {
+				if (undo.classList.contains('btn-die')) {
+					undo.classList.add('btn-active');
+					undo.classList.remove('btn-die');
+				}
+				if (!unundo.classList.contains('hide')) {
+					unundo.classList.add('hide');
+				}
+			}
+		}
+
+		//状态记录
+		const status = {
+			size: util.getWidth() || 450,
+			chressBord: util.getChressBord(),
+			over: false,
+			player: true,
+			chessman: {
+				x: null,
+				y: null
+			}
+		}
+
+		const setCanvas = function() {
+			canvas.setAttribute("width", status.size + 'px');
+			canvas.setAttribute("height", status.size + 'px');
+			cboard.setAttribute("width", status.size + 'px');
+			cboard.setAttribute("height", status.size + 'px');
+			document.querySelector(".canvas-box").style.width = status.size + 'px';
+		}
+		const drawBoard = function() {
+
+			var big = 15; // 15x15
+
+			var pos = status.size / 15,
+				edge = status.size - status.size / 30,
+				ctx = cboard.getContext("2d");
+
+			status.pos = pos
+
+
+			for (var i = 0; i < big; i++) {
+				ctx.strokeStyle = "#666";
+				ctx.moveTo(pos / 2, pos / 2 + i * pos);
+				ctx.lineTo(edge, pos / 2 + i * pos);
+				ctx.stroke();
+				ctx.moveTo(pos / 2 + i * pos, pos / 2);
+				ctx.lineTo(pos / 2 + i * pos, edge);
+				ctx.stroke();
+			}
+		}
+
+
+
+		const handler = function() {
+			canvas.onclick = function(e) {
+				if (status.over) return;
+				var x = e.offsetX;
+				var y = e.offsetY;
+				var i = Math.floor(x / status.pos);
+				var j = Math.floor(y / status.pos);
+				if (status.chressBord[i][j] == 0) {
+					status.chessman.x = i
+					status.chessman.y = j
+					setChess(i, j)
+					util.showBtn()
+				}
+			}
+
+			undo.onclick = function(e) {
+				if (undo.classList.contains('btn-die')) return;
+				var i = status.chessman.x;
+				var j = status.chessman.y;
+
+
+				util.clearChess(i, j);
+
+			}
+
+			unundo.onclick = function(e) {
+				var i = status.chessman.x;
+				var j = status.chessman.y;
+				setChess(i, j)
+				unundo.classList.add('hide')
+			}
+
+
+			function setChess(i, j) {
+				if (status.player) {
+					status.chressBord[i][j] = 1;
+				} else {
+					status.chressBord[i][j] = 2;
+				}
+				util.drawChessman(i, j, status.player);
+				check(i, j)
+				status.player = !status.player;
+			}
+		}
+		const check = (function() {
+			var flag = 1;
+
+
+			// 垂直方向
+			function canningPortrait(i, j, type) {
+				canningUp(i, j, type)
+				canningDown(i, j, type)
+				flag = 1
+			}
+
+			// 水平方向
+			function canningTransverse(i, j, type) {
+				canningLeft(i, j, type)
+				canningRight(i, j, type)
+				flag = 1
+			}
+
+			// 左上-右下
+			function canningDiagonal(i, j, type) {
+				canningUpLeft(i, j, type)
+				canningDownRight(i, j, type)
+				flag = 1
+			}
+
+
+			// 左上-右下
+			function canningReDiagonal(i, j, type) {
+				canningUpRight(i, j, type)
+				canningDownLeft(i, j, type)
+				flag = 1
+			}
+
+
+
+			function canningUp(i, j, type) {
+				if (flag <= 4 && j > 0 && status.chressBord[i][j - 1] == type) {
+					canningUp(i, j - 1, type)
+					if (flag == 4) {
+						util.gameover()
+						return false
+					}
+					flag++
+				}
+			}
+
+			function canningDown(i, j, type) {
+				if (flag <= 4 && j < 14 && status.chressBord[i][j + 1] == type) {
+					canningDown(i, j + 1, type)
+					if (flag == 4) {
+						util.gameover()
+						return false
+					}
+					flag++
+				}
+			}
+
+
+
+			function canningLeft(i, j, type) {
+				if (flag <= 4 && i > 0 && status.chressBord[i - 1][j] == type) {
+					canningLeft(i - 1, j, type)
+					if (flag == 4) {
+						util.gameover()
+						return false
+					}
+					flag++
+				}
+			}
+
+			function canningRight(i, j, type) {
+				if (flag <= 4 && i < 14 && status.chressBord[i + 1][j] == type) {
+
+					canningRight(i + 1, j, type)
+					if (flag == 4) {
+						util.gameover()
+						return false
+					}
+					flag++
+				}
+			}
+
+
+			function canningUpLeft(i, j, type) {
+				if (flag <= 4 && j > 0 && i > 0 && status.chressBord[i - 1][j - 1] == type) {
+					canningUpLeft(i - 1, j - 1, type)
+					if (flag == 4) {
+						util.gameover()
+						return false
+					}
+					flag++
+				}
+			}
+
+			function canningDownRight(i, j, type) {
+				if (flag <= 4 && j < 14 && i < 14 && status.chressBord[i + 1][j + 1] == type) {
+					canningDownRight(i + 1, j + 1, type)
+					if (flag == 4) {
+						util.gameover()
+						return false
+					}
+					flag++
+				}
+			}
+
+
+			function canningUpRight(i, j, type) {
+				if (flag <= 4 && j > 0 && i < 14 && status.chressBord[i + 1][j - 1] == type) {
+					canningUpRight(i + 1, j - 1, type)
+					if (flag == 4) {
+						util.gameover()
+						return false
+					}
+					flag++
+				}
+			}
+
+			function canningDownLeft(i, j, type) {
+				if (flag <= 4 && j < 14 && i > 0 && status.chressBord[i - 1][j + 1] == type) {
+					canningDownLeft(i - 1, j + 1, type)
+					if (flag == 4) {
+						util.gameover()
+						return false
+					}
+					flag++
+				}
+			}
+
+
+			return function(i, j) {
+				var type = status.player == true ? 1 : 2
+				flag = 1;
+				canningPortrait(i, j, type)
+				canningTransverse(i, j, type)
+				canningDiagonal(i, j, type)
+				canningReDiagonal(i, j, type)
+
+			}
+
+		})()
+
+
+		// 初始化
+		;
+		(function() {
+			setCanvas();
+			drawBoard();
+			handler();
+		})(window)
+	}())
+	</script>
+</body>
+</html>
