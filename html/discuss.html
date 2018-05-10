@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="x5-orientation" content="portrait">
+        <title>login</title>
+        <!-- 引入 FrozenUI -->
+        <link rel="stylesheet" href="http://i.gtimg.cn/vipstyle/frozenui/2.0.0/css/frozen.css"/>
+        <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/base.css">
+    </head>
+    <body>
+        <!-- 使用 -->
+        <ul class="ui-list ui-border-tb ">
+            <li style="margin-left:0">
+                <div class="ui-list-img-square">
+                    <img src="../img/lf.jpg" height="100" width="100" alt="">
+                </div>
+                <div class="ui-list-info">
+                    <h4 class="ui-nowrap">XXXXXXX微社区</h4>
+                </div>
+            </li>
+        </ul>
+        
+        <div class="op-post">
+          <div>公告1公告1公告1公告1公告1公告1公告1</div>
+          <div>公告1公告1公告1公告1公告1公告1公告1</div>
+        </div>
+        <div class="ui-tab mb10">
+            <ul class="ui-tab-nav ui-border-b">
+                <li class="current"><span>活动专区</span></li>
+                <li><span>产品测评</span></li>
+                <li><span>调研投票</span></li>
+            </ul>
+        </div>
+
+        <div class="sq-box">
+          <div class="sq-item">xxxxxx</div>
+          <div class="sq-item">xxxxxx</div>
+          <div class="sq-item">xxxxxx</div>
+          <div class="sq-item">xxxxxx</div>
+
+        </div>
+
+
+
+        <script src="../js/jquery.min.js">
+        </script>
+        <script>
+          var _mtac = {};
+          (function() {
+              var mta = document.createElement("script");
+              mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+              mta.setAttribute("name", "MTAH5");
+              mta.setAttribute("sid", "500421336");
+              var s = document.getElementsByTagName("script")[0];
+              s.parentNode.insertBefore(mta, s);
+          })();
+          </script>
+          <script>
+            $(function(){
+              // 选项卡
+              $('.ui-tab-nav').on('click', 'li', function(e) {
+                event.preventDefault();
+                $(this).addClass('current').siblings('.current').removeClass('current')
+              });
+
+              // 列表展示
+              $('.mc-title').on('click', function(event) {
+                event.preventDefault();
+                $(this).toggleClass('mc-t-act').siblings('.ui-list').slideToggle(200);
+              });
+
+            })
+          </script>
+    </body>
+</html>
