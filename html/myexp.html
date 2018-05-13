@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="x5-orientation" content="portrait">
+        <title>login</title>
+        <!-- 引入 FrozenUI -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/FrozenUI/1.3.0/css/frozen-min.css"/>
+        <link rel="stylesheet" href="../css/base.css">
+    </head>
+    <body>
+        <!-- 使用 -->
+        <div class="my-info clear">
+          <img src="../img/lf.jpg" alt="" class="m-head">
+          <div class="m-exp">
+            <p>级别：1</p>
+            <p><span></span><span>经验值：6666</span></p>
+          </div>
+          <div class="rf e-btn"><img src="../img/qd1.png"></div>
+          <div class="clear my-link">
+            <button class="ui-btn ui-btn-orange lf">奖励规则</button>
+            <button class="ui-btn ui-btn-orange rf">纪律说明</button>
+          </div> 
+        </div>
+        
+        <div class="ui-tab mb10">
+            <ul class="ui-tab-nav ui-border-b">
+                <li><span>我参与的</span></li>
+                <li class="current"><span>我的经验值</span></li>
+                <li><span>排行榜</span></li>
+            </ul>
+        </div>
+
+        <!-- 列表 -->
+        <ul class="my-exp">
+          <li class="my-exp-item">个人总经验值： <b class="my-exp-num">20</b>分</li>
+          <li class="my-exp-item">日常体验经验值： <b class="my-exp-num">20</b>分</li>
+          <li class="my-exp-item">任务体验经验值： <b class="my-exp-num">20</b>分</li>
+          <li class="my-exp-item">活动奖励经验值： <b class="my-exp-num">20</b>分</li>
+          <li class="my-exp-item">其他奖励经验值： <b class="my-exp-num">20</b>分</li>
+          <li class="my-exp-item">签到奖励经验值： <b class="my-exp-num">20</b>分</li>
+        </ul>
+
+        <div class="extend-exp">
+          <span>您距离下一等级还差</span>
+          <b class="extend-num">666</b>
+          <span>经验值</span>
+        </div>
+
+
+
+
+        <script src="../js/jquery.min.js">
+        </script>
+        <script>
+          var _mtac = {};
+          (function() {
+              var mta = document.createElement("script");
+              mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+              mta.setAttribute("name", "MTAH5");
+              mta.setAttribute("sid", "500421336");
+              var s = document.getElementsByTagName("script")[0];
+              s.parentNode.insertBefore(mta, s);
+          })();
+          </script>
+          <script>
+            $(function(){
+              const linkArray = ['my.html', 'myexp.html', 'leaderboard.html'];
+              // 选项卡
+              $('.ui-tab-nav').on('click', 'li', function(e) {
+                // event.preventDefault();
+                // $(this).addClass('current').siblings('.current').removeClass('current')
+                window.location.href = linkArray[$(this).index()]
+              });
+
+              // 列表展示
+              $('.mc-title').on('click', function(event) {
+                event.preventDefault();
+                $(this).toggleClass('mc-t-act').siblings('.ui-list').slideToggle(200);
+              });
+
+            })
+          </script>
+    </body>
+</html>

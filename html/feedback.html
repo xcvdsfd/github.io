@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="x5-orientation" content="portrait">
+        <title>login</title>
+        <!-- 引入 FrozenUI -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/FrozenUI/1.3.0/css/frozen-min.css"/>
+        <link rel="stylesheet" href="../css/base.css">
+    </head>
+    <body>
+        <!-- 使用 -->
+          <ul class="ui-list ui-border-tb ">
+              <li style="margin-left:0">
+                  <div class="ui-list-img-square">
+                      <img src="../img/lf.jpg" class="dis-icon" width="130">
+                  </div>
+                  <div class="ui-list-info">
+                      <h4 class="ui-nowrap dis-title">期待听到您的声音</h4>
+                  </div>
+              </li>
+          </ul>
+         
+         <div class="feddbox">
+           <div class="feed">
+              <h4 class="feed-h4">您的体验涉及哪一类内容</h4>
+             <label class="fed-label">
+                <input type="radio" class="radio-io" name="name1">
+                <span>创新点子</span>
+              </label>
+              <label class="fed-label">
+                <input type="radio" class="radio-io" name="name1">
+                <span>现有产品优化</span>
+              </label>
+              <label class="fed-label">
+                <input type="radio" class="radio-io" name="name1">
+                <span>舆情</span>
+              </label>
+           </div>
+           <div class="feed">
+              <h4 class="feed-h4">您的意见属于下列哪一类</h4>
+             <label class="fed-label">
+                <input type="radio" class="radio-io" name="name2">
+                <span>系统类</span>
+              </label>
+              <label class="fed-label">
+                <input type="radio" class="radio-io" name="name2">
+                <span>查账还款</span>
+              </label>
+              <label class="fed-label">
+                <input type="radio" class="radio-io" name="name2">
+                <span>积分</span>
+              </label>
+              <label class="fed-label">
+                <input type="radio" class="radio-io" name="name2">
+                <span>活动权益</span>
+              </label>
+              <label class="fed-label">
+                <input type="radio" class="radio-io" name="name2">
+                <span>卡产品</span>
+              </label>
+              <label class="fed-label">
+                <input type="radio" class="radio-io" name="name2">
+                <span>其它</span>
+              </label>
+           </div>
+           <div class="feed">
+              <h4 class="feed-h4">您的具体建议是什么</h4>
+              <div>
+                <p class="feed-h5">问题描述：</p>
+                <textarea class="feed-area"></textarea>
+              </div>
+              <div>
+                <p class="feed-h5">优化方案：</p>
+                <textarea class="feed-area"></textarea>
+              </div>
+              <div>
+                <p class="feed-h5">参考方案：</p>
+                <textarea class="feed-area"></textarea>
+              </div>
+            </div>
+
+            <div class="feed-bott">
+              <p><span>手机型号：</span><span>华为MATE 10</span></p>
+              <p><span>手机系统版号：</span><span>安卓8.0</span></p>
+            </div>
+
+            <div class="feed">
+              <div class="io-filebox feed-filebox">
+                <input type="file" class="io-file">
+              </div>
+              <div class="feed-dec">
+                <p>附件1</p>
+                <p>一张截图</p>
+              </div>
+            </div>
+         </div>
+
+          <div class="extend-exp task-btn">提交</div>
+
+
+          <!-- 弹窗 -->
+          <div class="ui-dialog show" style="display: none;" id="ui-dialog">
+              <div class="ui-dialog-cnt">
+                  <div class="ui-dialog-bd">
+                      <p>提交成功  感谢您的体验！</p>
+                  </div>
+              </div>
+          </div>
+
+
+        <script src="../js/jquery.min.js">
+        </script>
+        <script>
+          var _mtac = {};
+          (function() {
+              var mta = document.createElement("script");
+              mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+              mta.setAttribute("name", "MTAH5");
+              mta.setAttribute("sid", "500421336");
+              var s = document.getElementsByTagName("script")[0];
+              s.parentNode.insertBefore(mta, s);
+          })();
+          </script>
+          <script>
+            $(function(){
+              // 提交
+              $('.task-btn').on('click', function(event) {
+                event.preventDefault();
+                $('#ui-dialog').fadeIn(200)
+                // setTimeout(()=> {
+                //   window.location.href = 'hadSubmit.html'
+                // },2000)
+              });
+
+              // $('#ui-dialog').on('click', function(event) {
+              //   event.preventDefault();
+              //   if ($(event.target).hasClass('ui-dialog')) {
+              //     $(this).fadeOut(200)
+              //   }
+              // });
+
+            })
+          </script>
+    </body>
+</html>

@@ -19,7 +19,7 @@
             <p>级别：1</p>
             <p><span></span><span>经验值：6666</span></p>
           </div>
-          <div class="rf e-btn"><img src="../img/qd.png"></div>
+          <div class="rf e-btn"><img src="../img/qd1.png"></div>
           <div class="clear my-link">
             <button class="ui-btn ui-btn-orange lf">奖励规则</button>
             <button class="ui-btn ui-btn-orange rf">纪律说明</button>
@@ -130,10 +130,12 @@
           </script>
           <script>
             $(function(){
+              const linkArray = ['my.html', 'myexp.html', 'leaderboard.html'];
               // 选项卡
               $('.ui-tab-nav').on('click', 'li', function(e) {
-                event.preventDefault();
-                $(this).addClass('current').siblings('.current').removeClass('current')
+                // event.preventDefault();
+                // $(this).addClass('current').siblings('.current').removeClass('current')
+                window.location.href = linkArray[$(this).index()]
               });
 
               // 列表展示
