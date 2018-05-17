@@ -1,5 +1,4 @@
 body {
-  background: #fff;
   padding-bottom: 20px;
   -webkit-overflow-scrolling : touch;
   user-select: none;
@@ -8,10 +7,14 @@ body {
 @main: #468df7;
 @orange : #ed4b4b;
 @orange1: #ed4b4b;
-@linear1: #e7e7e7;
-@linear2: #ececec;
+@linear1: #f7f7f7;
+@linear2: #f3f3f3;
 a {
   color: @orange;
+}
+.bg-normal {
+  min-height: 100%;
+  background-image: linear-gradient(45deg ,@linear1 0, @linear2 100%);
 }
 .login {
   color: #bc0d0d;
@@ -126,9 +129,9 @@ a {
   }
 }
 .ui-btn-orange {
-    background: @orange1;
-    border-color: @orange1;
-    color: #fff;
+    background: #f7f7f7;
+    border-color: #f7f7f7;
+    color: @orange;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
 }
@@ -181,6 +184,8 @@ a {
   padding: 10px;
   max-height: 64px;
   line-height: 2;
+  background: #fff;
+  border-bottom: 1px solid #efefef;
   .op-pitem {
     display: block;
     color: inherit;
@@ -196,20 +201,20 @@ a {
 }
 .sq-box {
   font-size: 0;
-  margin-top: 10px;
+  margin-top: 5px;
   .sq-item {
     display: inline-block;
-    width: 41%;
+    width: 47%;
     padding: 30px 0;
     text-align: center;
     font-weight: 600;
-    background-image: linear-gradient(45deg , @linear1, @linear2 100%);
+    background: #fff;
     font-size: 18px;
     &:nth-child(2n+1) {
-      margin: 20px 3% 20px 6%;
+      margin: 5px 1% 5px 2%;
     }
     &:nth-child(2n) {
-      margin: 20px 6% 20px 3%;
+      margin: 5px 2% 5px 1%;
     }
   }
 }
@@ -220,10 +225,7 @@ a {
 .ui-list {
   background-image: none !important;
 }
-.dis-icon {
-  max-height: 100px;
-  margin-right: 20px;
-}
+
 .dis-title {
   font-weight: 600;
 }
@@ -242,7 +244,7 @@ a {
   bottom: 0;
   left: 0;
   right: 0;
-  background: #efefef;
+  background: #c4c4c4;
   text-align: center;
   line-height: 3;
   .extend-num {
@@ -294,7 +296,7 @@ a {
   }
 }
 .task-desc {
-  padding: 10px 20px;
+  padding: 10px 20px 30px;
 }
 .io-filebox {
   position: relative;
@@ -334,7 +336,8 @@ a {
   }
 }
 .task-aff {
-  padding: 10px 20px 48px;
+  padding: 10px 20px 10px;
+  line-height: 1.8;
 }
 .task-btn {
   background: @orange;
@@ -354,41 +357,49 @@ a {
 .text-green {
   color: #52b651;
 }
-.feddbox {
-  padding: 0 20px 48px;
-  .feed-h4 {
-    font-weight: 600;
-    line-height: 2;
-  }
+.feed-h4 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 3;
+  padding: 0 20px;
 }
-.feed {
-  font-size: 0;
-  .fed-label {
-    display: inline-block;
-    margin: 6px 0;
-    font-size: 16px;
-    text-align: center;
-    margin-right: 20px;
-  }
-  .radio-io {
-
-  }
+.feed-h5 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 2;
+  padding: 0 20px 6px;
+}
   .feed-area {
+    @diff : 40px;
+    width : calc(~"100% - @{diff}");
     resize: none;
     border: 1px solid #ccc;
     font-size: 16px;
     padding: 0.5em;
     box-sizing: border-box;
-    width: 100%;
-    height: 80px;
+    margin: 0 20px;
+    height: 120px;
   }
-  .feed-h5 {
+.feed-box {
+  background: #fff;
+  margin: 10px;
+  .ui-form-item {
     font-size: 16px;
-    line-height: 2;
   }
 }
-.feed-bott {
-  margin: 20px 0;
+.feed-box1 {
+  margin: 10px;
+  padding: 5px 20px;
+  font-size: 14px;
+  p {
+    line-height: 1.8;
+  }
+}
+.feed-form {
+  padding-bottom: 24px;
+}
+.feef-file {
+  padding: 10px 20px 15px;
 }
 .feed-filebox {
   display: inline-block;
@@ -401,4 +412,28 @@ a {
   font-size: 16px;
   vertical-align: middle;
   line-height: 31px;
+}
+.ui-form-item input[type="checkbox"], .ui-form-item input[type="radio"] {
+    padding-left: 0;
+    transform: scale(0.8,0.8) translateY(-2px);
+}
+.normal-list {
+  background: @orange;
+  color: #fff;
+  .dis-title {
+    font-size: 20px;
+  }
+  
+}
+.normal-header {
+  padding: 10px 20px;
+  line-height: 70px;
+}
+.dis-icon {
+  height: 70px;
+  max-width: 130px;
+}
+.sub-content {
+  margin: 10px;
+  background: #fff;
 }
