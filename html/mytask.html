@@ -14,7 +14,7 @@
         <!-- 使用 -->
         <header class="task-header">欢迎来到体验官之家</header>
         
-        <div class="ui-tab mb10">
+        <div class="ui-tab">
             <ul class="ui-tab-nav ui-border-b">
                 <li><span>领取任务</span></li>
                 <li class="current"><span>我的任务</span></li>
@@ -22,43 +22,61 @@
         </div>
 
         <!-- 列表 -->
-        <div class="my-content">
-          <div class="mc-title">待完成任务</div>
-          <ul class="task-list">
-            <li class="task-li">
-              <h4 class="task-top">xxxxx任务</h4>
-              <div class="0">
-                <h4>任务描述</h4>
-                <div>床前明月光，疑是地上霜。举头望明月，低头思故乡。</div>
-              </div>
-              <a href="#">上传任务</a>
-            </li>
-            <li class="task-li">
-              <h4 class="task-top">xxxxx任务</h4>
-              <div>任务描述</div>
-              <a href="#">上传任务</a>
-            </li>
-          </ul>
+        <div class="mc-title" id="first">待完成任务</div>
+        <div class="ts-body" style="display: none;">
+          <div class="my-content">
+            <ul class="ui-list ui-list-nospace ui-border-tb">
+              <li class="ui-border-t">
+                  <div class="ui-list-info">
+                      <h4 class="ui-nowrap">xxxxx任务</h4>
+                      <p class="ui-nowrap">床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
+                  </div>
+                  <div class="ui-list-img-square w-us text-red">
+                      <a href="#">上传任务</a>
+                  </div>
+              </li>
+              <li class="ui-border-t">
+                  <div class="ui-list-info">
+                      <h4 class="ui-nowrap">XXXXXX任务</h4>
+                      <p class="ui-nowrap">床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
+                  </div>
+                  <div class="ui-list-img-square w-us text-red">
+                      <a href="#">上传任务</a>
+                  </div>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="my-content">
-          <div class="mc-title">已完成任务</div>
-          <ul class="task-list">
-            <li class="task-li">
-              <h4 class="task-top">xxxxx任务</h4>
-              <div class="0">
-                <h4>任务描述</h4>
-                <div>床前明月光，疑是地上霜。举头望明月，低头思故乡。</div>
-              </div>
-              <a href="#" class="text-green">详情</a>
-            </li>
-            <li class="task-li">
-              <h4 class="task-top">xxxxx任务</h4>
-              <div>任务描述</div>
-              <a href="#" class="text-green">详情</a>
-            </li>
-          </ul>
+
+        <div class="mc-title">已完成任务</div>
+        <div class="ts-body" style="display: none;">
+          <div class="my-content">
+            <ul class="ui-list ui-list-nospace ui-border-tb">
+              <li class="ui-border-t">
+                  <div class="ui-list-info">
+                      <h4 class="ui-nowrap">xxxxx任务</h4>
+                      <p class="ui-nowrap">床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
+                  </div>
+                  <div class="ui-list-img-square w-us">
+                      <a href="#">查看任务</a>
+                  </div>
+              </li>
+              <li class="ui-border-t">
+                  <div class="ui-list-info">
+                      <h4 class="ui-nowrap">XXXXXX任务</h4>
+                      <p class="ui-nowrap">床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
+                  </div>
+                  <div class="ui-list-img-square w-us">
+                      <a href="#">查看任务</a>
+                  </div>
+              </li>
+            </ul>
+          </div>
         </div>
+        
+
+
 
         <script src="../js/jquery.min.js"></script>
           <script>
@@ -74,9 +92,9 @@
               // 列表展示
               $('.mc-title').on('click', function(event) {
                 event.preventDefault();
-                $(this).toggleClass('mc-t-act').siblings('.task-list').slideToggle(200);
+                $(this).toggleClass('mc-t-act').next('.ts-body').slideToggle(200);
               });
-
+              $('#first').trigger('click')
             })
           </script>
     </body>

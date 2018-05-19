@@ -8,13 +8,14 @@
         <meta name="x5-orientation" content="portrait">
         <title>task</title>
         <link rel="stylesheet" href="../css/frozenui.css">
+        <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
         <link rel="stylesheet" href="../css/base.css">
     </head>
     <body>
         <!-- 使用 -->
         <header class="task-header">欢迎来到体验官之家</header>
         
-        <div class="ui-tab mb10">
+        <div class="ui-tab">
             <ul class="ui-tab-nav ui-border-b">
                 <li class="current"><span>领取任务</span></li>
                 <li><span>我的任务</span></li>
@@ -22,19 +23,35 @@
         </div>
 
         <!-- 列表 -->
+        
         <div class="my-content">
-          <div class="mc-title">XXXXXXXXXX任务</div>
-          <div class="task-list">
-            <h4 class="task-top">任务描述</h4>
-            <ul class="task-dow">
-              <li>附件</li>
-              <li><span>XXXXX文件.XLS</span><a href="#">下载</a></li>
-              <li><span>XXXXX文件.XLS</span><a href="#">下载</a></li>
-            </ul>
-            <a href="#">领取任务</a>
-          </div>
+          <div class="mc-title" id="first">XXXXXXXXXX任务</div>
+          <ul class="ui-list ui-list-nospace ui-border-tb" style="display: none;">
+            <li class="ui-border-t">
+                <div class="ui-list-info">
+                    <h4 class="ui-nowrap">任务描述</h4>
+                    <p class="ui-nowrap">床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
+                    
+                </div>
+                <div class="ui-list-img-square w-us text-red">
+                    <a href="#">领取任务</a>
+                </div>
+            </li>
+            <li class="ui-border-t">
+                <div class="ui-list-info">
+                    <h5 class="ui-nowrap why-h5"><i class="fa fa-file-image-o" aria-hidden="true"></i>附件</h5>
+                    <p class="why-nowrap">
+                      <span class="donw-left">床前明月光，疑是地上霜。举头望明月，低头思故乡。</span>
+                      <a href="#" class="donw-right text-red">下载</a>
+                    </p>
+                    <p class="why-nowrap">
+                      <span class="donw-left">床前明月光，疑是地上霜。举头望明月，低头思故乡。</span>
+                      <a href="#" class="donw-right text-red">下载</a>
+                    </p>
+                </div>
+            </li>
+          </ul>
         </div>
-
         <script src="../js/jquery.min.js"></script>
 
           <script>
@@ -42,7 +59,7 @@
               const linkArray = ['recievetask.html', 'mytask.html'];
               // 选项卡
               $('.ui-tab-nav').on('click', 'li', function(e) {
-                // event.preventDefault();
+                event.preventDefault();
                 // $(this).addClass('current').siblings('.current').removeClass('current')
                 window.location.href = linkArray[$(this).index()]
               });
@@ -50,8 +67,9 @@
               // 列表展示
               $('.mc-title').on('click', function(event) {
                 event.preventDefault();
-                $(this).toggleClass('mc-t-act').siblings('.task-list').slideToggle(200);
+                $(this).toggleClass('mc-t-act').siblings('.ui-list').slideToggle(200);
               });
+              $('#first').trigger('click')
 
             })
           </script>

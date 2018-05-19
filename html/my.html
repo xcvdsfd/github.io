@@ -35,7 +35,7 @@
 
         <!-- 列表 -->
         <div class="my-content">
-          <div class="mc-title">我的日常体验反馈</div>
+          <div class="mc-title" id="first">我的日常体验反馈</div>
           <ul class="ui-list ui-list-nospace ui-border-tb" style="display: none;">
             <li class="ui-border-t">
                 <div class="ui-list-info">
@@ -68,8 +68,8 @@
                     <h4 class="ui-nowrap">XXXXXX体验反馈</h4>
                     <p class="ui-nowrap">床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
                 </div>
-                <div class="ui-list-img-square w-us">
-                    已采纳
+                <div class="ui-list-img-square w-us text-red">
+                    未完成
                 </div>
             </li>
             <li class="ui-border-t">
@@ -77,8 +77,8 @@
                     <h4 class="ui-nowrap">XXXXXX体验反馈</h4>
                     <p class="ui-nowrap">床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
                 </div>
-                <div class="ui-list-img-square w-us">
-                    已采纳
+                <div class="ui-list-img-square w-us text-red">
+                    未完成
                 </div>
             </li>
           </ul>
@@ -130,6 +130,7 @@
                 event.preventDefault();
                 $(this).toggleClass('mc-t-act').siblings('.ui-list').slideToggle(200);
               });
+              $('#first').trigger('click')
 
             })
           </script>

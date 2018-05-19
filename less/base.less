@@ -12,6 +12,12 @@ body {
 a {
   color: @orange;
 }
+.fa {
+  margin-right: 0.4em;
+}
+.text-red {
+  color: @orange !important;
+}
 .bg-normal {
   min-height: 100%;
   background-image: linear-gradient(45deg ,@linear1 0, @linear2 100%);
@@ -138,12 +144,7 @@ a {
 .ui-tab {
   border-bottom: 1px solid #efefef;
 }
-.my-content {
-  .ui-list {
-    padding: 0 20px;
-    box-sizing: border-box;
-  }
-  .mc-title {
+.mc-title {
     padding: 0 20px;
     font-size: 18px;
     font-weight: 600;
@@ -162,6 +163,12 @@ a {
       border-color: transparent transparent transparent #999;
     }
   }
+.my-content {
+  .ui-list {
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  
   .mc-t-act {
     &:after {
       border-color: #999 transparent transparent transparent;
@@ -175,6 +182,7 @@ a {
 .w-us {
   line-height: 67px;
   color: #52b651;
+  font-size: 15px;
 }
 .mb10 {
   margin-bottom: 10px;
@@ -183,13 +191,15 @@ a {
   position: relative;
   padding: 10px;
   max-height: 64px;
-  line-height: 2;
+  line-height: 32px;
+  font-size: 15px;
   background: #fff;
   border-bottom: 1px solid #efefef;
   .op-pitem {
     display: block;
     color: inherit;
     max-width: 70%;
+    text-indent: 0.5em;
     white-space: nowrap;
     overflow: hidden;text-overflow: ellipsis;
   }
@@ -201,7 +211,6 @@ a {
 }
 .sq-box {
   font-size: 0;
-  margin-top: 5px;
   .sq-item {
     display: inline-block;
     width: 47%;
@@ -211,10 +220,10 @@ a {
     background: #fff;
     font-size: 18px;
     &:nth-child(2n+1) {
-      margin: 5px 1% 5px 2%;
+      margin: 5px 1% 0 2%;
     }
     &:nth-child(2n) {
-      margin: 5px 2% 5px 1%;
+      margin: 5px 2% 0 1%;
     }
   }
 }
@@ -230,10 +239,12 @@ a {
   font-weight: 600;
 }
 .my-exp {
-  font-size: 18px;
-  padding-bottom: 48px;
+  font-size: 15px;
+  padding: 10px;
+  margin-bottom: 36px;
   .my-exp-item {
-    margin: 20px;
+    line-height: 3;
+    padding: 0 10px;
   }
   .my-exp-num {
     margin: 0 0.4em;
@@ -245,6 +256,7 @@ a {
   left: 0;
   right: 0;
   background: #c4c4c4;
+  color: #fff;
   text-align: center;
   line-height: 3;
   .extend-num {
@@ -254,8 +266,7 @@ a {
 .mylead {
   padding: 0 20px;
   line-height: 2;
-  font-size: 18px;
-  color: @orange;
+  font-size: 16px;
 }
 .board {
   padding: 10px 20px;
@@ -265,11 +276,11 @@ a {
   .board-item {
     width: 100%;
     text-align: center;
-    padding: 3px 0;
+    padding: 8px 0;
     white-space: nowrap;font-size: 0;
     span {
       display: inline-block;
-      font-size: 18px;
+      font-size: 16px;
       width: 25%;
     }
   }
@@ -303,7 +314,7 @@ a {
   width: 100px;
   height: 62px;
   margin-left: 20px;
-  background-image: linear-gradient(45deg ,@linear1 0, @linear2 100%);
+  background: #ccc;
   overflow: hidden;
   .io-file {
     position: absolute;
@@ -434,6 +445,39 @@ a {
   max-width: 130px;
 }
 .sub-content {
-  margin: 10px;
+  margin: 10px 10px 48px;
   background: #fff;
+}
+.ui-btn-dange {
+  background: @orange;
+  color: #fff;
+}
+.lb-box {
+  padding: 10px 0;
+}
+.ui-list-img-square a {
+  color: inherit;
+}
+.donw-left {
+  display: inline-block;
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.donw-right {
+  display: inline-block;
+  margin-left: 10%;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.why-nowrap {
+  white-space: nowrap;
+  line-height: 2;
+}
+.why-h5 {
+  font-weight: 600;
 }
