@@ -18,7 +18,10 @@
             <p>级别：1</p>
             <p><span></span><span>经验值：6666</span></p>
           </div>
-          <div class="rf e-btn"><img src="../img/qd.png"></div>
+          <div class="rf e-btn">
+            <img src="../img/qd.png" id="qdclick">
+            <div class="e-b-text">已连续签到2天</div>
+          </div>
           <div class="clear my-link">
             <button class="ui-btn ui-btn-orange lf">奖励规则</button>
             <button class="ui-btn ui-btn-orange rf">纪律说明</button>
@@ -27,20 +30,20 @@
         
         <div class="ui-tab mb10">
             <ul class="ui-tab-nav ui-border-b">
-                <li><span>我参与的</span></li>
-                <li class="current"><span>我的经验值</span></li>
-                <li><span>排行榜</span></li>
+                <li><span><i class="iconfont">&#xe606;</i>我参与的</span></li>
+                <li class="current"><span><i class="iconfont">&#xe61a;</i>我的经验值</span></li>
+                <li><span><i class="iconfont">&#xe61c;</i>排行榜</span></li>
             </ul>
         </div>
 
         <!-- 列表 -->
         <ul class="my-exp feed-box">
-          <li class="my-exp-item">个人总经验值： <b class="my-exp-num">20</b>分</li>
-          <li class="my-exp-item">日常体验经验值： <b class="my-exp-num">20</b>分</li>
-          <li class="my-exp-item">任务体验经验值： <b class="my-exp-num">20</b>分</li>
-          <li class="my-exp-item">活动奖励经验值： <b class="my-exp-num">20</b>分</li>
-          <li class="my-exp-item">其他奖励经验值： <b class="my-exp-num">20</b>分</li>
-          <li class="my-exp-item">签到奖励经验值： <b class="my-exp-num">20</b>分</li>
+          <li class="my-exp-item"><i class="iconfont">&#xe600;</i>个人总经验值： <b class="my-exp-num">20</b>分</li>
+          <li class="my-exp-item"><i class="iconfont">&#xe630;</i>日常体验经验值： <b class="my-exp-num">20</b>分</li>
+          <li class="my-exp-item"><i class="iconfont">&#xe64a;</i>任务体验经验值： <b class="my-exp-num">20</b>分</li>
+          <li class="my-exp-item"><i class="iconfont">&#xe608;</i>活动奖励经验值： <b class="my-exp-num">20</b>分</li>
+          <li class="my-exp-item"><i class="iconfont">&#xe65e;</i>其他奖励经验值： <b class="my-exp-num">20</b>分</li>
+          <li class="my-exp-item"><i class="iconfont">&#xe607;</i>签到奖励经验值： <b class="my-exp-num">20</b>分</li>
         </ul>
 
         <div class="extend-exp">
@@ -49,10 +52,20 @@
           <span>经验值</span>
         </div>
 
-
+        <div class="ui-dialog show" id="dialog" style="display: none;">
+            <div class="ui-dialog-cnt">
+                <div class="ui-dialog-bd" id="decontent">
+                    
+                </div>
+                <div class="ui-dialog-ft">
+                    <button type="button" data-role="button" id="dexit">退出</button>
+                </div>
+            </div>
+        </div>
 
 
         <script src="../js/jquery.min.js"></script>
+        <script src="../js/delog.js"></script>
         
           <script>
             $(function(){

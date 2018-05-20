@@ -12,9 +12,23 @@ body {
 a {
   color: @orange;
 }
-.fa {
-  margin-right: 0.4em;
+@font-face {
+  font-family: 'iconfont';  /* project id 673592 */
+  src: url('//at.alicdn.com/t/font_673592_360allb17lex9a4i.eot');
+  src: url('//at.alicdn.com/t/font_673592_360allb17lex9a4i.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_673592_360allb17lex9a4i.woff') format('woff'),
+  url('//at.alicdn.com/t/font_673592_360allb17lex9a4i.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_673592_360allb17lex9a4i.svg#iconfont') format('svg');
 }
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:inherit;
+    font-style:normal;
+    margin-right: 0.4em;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+  }
 .text-red {
   color: @orange !important;
 }
@@ -37,7 +51,7 @@ a {
   }
   .log-h3 {
     margin-top: 60px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     text-align: center;
     font-size: 28px;
     font-weight: 600;
@@ -126,6 +140,7 @@ a {
     }
   }
   .e-btn {
+    position: relative;
     img {
       display: inline-block;
       vertical-align: middle;
@@ -480,4 +495,26 @@ a {
 }
 .why-h5 {
   font-weight: 600;
+}
+.log-logo {
+  display: block;
+  max-width: 40%;
+  margin: 20px auto;
+}
+.e-b-text {
+  opacity: 0;
+  position: absolute;
+  top: 21px;
+  right: 38px;
+  width: 8em;
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+  text-align: right;
+  transform: translateY(20px);
+  transition: all .5s;
+}
+.e-b-active {
+  opacity: 1;
+  transform: translateY(0);
 }

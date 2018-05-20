@@ -8,7 +8,6 @@
         <meta name="x5-orientation" content="portrait">
         <title>board</title>
         <link rel="stylesheet" href="../css/frozenui.css">
-        <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
         <link rel="stylesheet" href="../css/base.css">
     </head>
     <body class="bg-normal">
@@ -19,7 +18,10 @@
             <p>级别：1</p>
             <p><span></span><span>经验值：6666</span></p>
           </div>
-          <div class="rf e-btn"><img src="../img/qd.png"></div>
+          <div class="rf e-btn">
+            <img src="../img/qd.png" id="qdclick">
+            <div class="e-b-text">已连续签到2天</div>
+          </div>
           <div class="clear my-link">
             <button class="ui-btn ui-btn-orange lf">奖励规则</button>
             <button class="ui-btn ui-btn-orange rf">纪律说明</button>
@@ -28,9 +30,9 @@
         
         <div class="ui-tab mb10">
             <ul class="ui-tab-nav ui-border-b">
-                <li><span>我参与的</span></li>
-                <li><span>我的经验值</span></li>
-                <li class="current"><span>排行榜</span></li>
+                <li><span><i class="iconfont">&#xe606;</i>我参与的</span></li>
+                <li><span><i class="iconfont">&#xe61a;</i>我的经验值</span></li>
+                <li class="current"><span><i class="iconfont">&#xe61c;</i>排行榜</span></li>
             </ul>
         </div>
         
@@ -38,10 +40,10 @@
         <!-- 列表 -->
           <div class="mylead">
             <div class="myhead-item">
-              <span><i class="fa fa-users" aria-hidden="true"></i>我的班级：</span><span>一班</span>
+              <span><i class="iconfont">&#xe620;</i>我的班级：</span><span>一班</span>
             </div>
             <div class="myhead-item">
-              <span><i class="fa fa-flag" aria-hidden="true"></i>班级排名：</span><span>第1名</span>
+              <span><i class="iconfont">&#xe77e;</i>班级排名：</span><span>第1名</span>
             </div>
           </div>
 
@@ -74,9 +76,19 @@
         </div>
 
 
-
+        <div class="ui-dialog show" id="dialog" style="display: none;">
+            <div class="ui-dialog-cnt">
+                <div class="ui-dialog-bd" id="decontent">
+                    
+                </div>
+                <div class="ui-dialog-ft">
+                    <button type="button" data-role="button" id="dexit">退出</button>
+                </div>
+            </div>
+        </div>
 
         <script src="../js/jquery.min.js"></script>
+        <script src="../js/delog.js"></script>
         
           <script>
             $(function(){

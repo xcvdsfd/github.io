@@ -18,8 +18,8 @@
           </div>
           <div class="op-post">
             <a href="#" class="op-pitem">公告公告公告公告公告公告公告公告公告公告</a>
-            <a href="#"  class="op-pitem">公告公告公告公告公告公告公告公告公告公告</a>
-            <div class="op-rqb"><button class="ui-btn ui-btn-dange">人气榜</button></div>
+            <a href="#" class="op-pitem">公告公告公告公告公告公告公告公告公告公告</a>
+            <div class="op-rqb"><button class="ui-btn ui-btn-dange" id="showde">人气榜</button></div>
           </div>
           <div class="ui-tab">
               <ul class="ui-tab-nav ui-border-b">
@@ -37,10 +37,24 @@
           </div>
 
 
+          <div class="ui-dialog show" id="dialog" style="display: none;">
+            <div class="ui-dialog-cnt">
+                <div class="ui-dialog-bd" id="decontent">
+                    <h3>人气榜</h3>
+                    <p>人气榜人气榜人气榜人气榜人气榜人气榜人气榜人气榜人气榜人气榜人气榜人气榜人气榜人气榜</p>
+                </div>
+                <div class="ui-dialog-ft">
+                    <button type="button" data-role="button" id="dexit">退出</button>
+                </div>
+            </div>
+          </div>
 
         <script src="../js/jquery.min.js"></script>
           <script>
             $(function(){
+              const $dexit = $('#dexit');
+              const $dialog = $('#dialog');
+
               // 选项卡
               $('.ui-tab-nav').on('click', 'li', function(e) {
                 event.preventDefault();
@@ -52,7 +66,26 @@
                 event.preventDefault();
                 $(this).toggleClass('mc-t-act').siblings('.ui-list').slideToggle(200);
               });
+              
+              // 人气榜
+              // 
+              $('#showde').on('click', function(event) {
+                event.preventDefault();
+                $dialog.show()
+              });
 
+             
+              $dexit.on('click', function(event) {
+                event.preventDefault();
+                $dialog.hide()
+              });
+
+              $dialog.on('click', function(event) {
+                event.preventDefault();
+                if ($(event.target).hasClass('ui-dialog')) {
+                  $dialog.hide()
+                }
+              });
             })
           </script>
     </body>
