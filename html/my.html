@@ -10,109 +10,70 @@
         <link rel="stylesheet" href="../css/frozenui.css">
         <link rel="stylesheet" href="../css/base.css">
     </head>
-    <body class="bg-normal">
-        <!-- 使用 -->
-        <div class="my-info clear normal-list">
+    <body>
+        <div class="my-info normal-list">
+          <i class="iconfont setting-icon">&#xe609;</i>
           <img src="../img/lf.jpg" alt="" class="m-head">
           <div class="m-exp">
-            <p>级别：1</p>
-            <p><span></span><span>经验值：6666</span></p>
+            <p class="m-exp-ps">
+                <span class="m-exp-p1">李云龙</span>
+
+                <!-- 已签到添加class => m-exp-hasqd -->
+                <span class="m-exp-qd" id="qdclick">签到</span>
+                <i class="iconfont exp-icon">&#xe689;</i>
+            </p>
+            <p class="m-exp-p2">级别：1</p>
+            <p class="m-exp-p2">经验值：6666</p>
           </div>
-          <div class="rf e-btn">
-            <img src="../img/qd.png" id="qdclick">
-            <div class="e-b-text">已连续签到2天</div>
+          <div class="e-btn">
+            <span class="extend-btn">奖励规则</span>
+            <span class="extend-btn">纪律说明</span>
           </div>
-          <div class="clear my-link">
-            <button class="ui-btn ui-btn-orange lf">奖励规则</button>
-            <button class="ui-btn ui-btn-orange rf">纪律说明</button>
-          </div> 
         </div>
         
         <div class="ui-tab mb10">
             <ul class="ui-tab-nav ui-border-b">
-                <li class="current"><span><i class="iconfont">&#xe606;</i>我参与的</span></li>
-                <li><span><i class="iconfont">&#xe61a;</i>我的经验值</span></li>
-                <li><span><i class="iconfont">&#xe61c;</i>排行榜</span></li>
+                <li class="current"><a href="my.html">我参与的</a></li>
+                <li><a href="myexp.html">我的经验值</a></li>
+                <li><a href="leaderboard.html">排行榜</a></li>
             </ul>
         </div>
 
-        <!-- 列表 -->
-        <div class="my-content">
-          <div class="mc-title" id="first">我的日常体验反馈</div>
-          <ul class="ui-list ui-list-nospace ui-border-tb" style="display: none;">
+        <ul class="ui-list ui-list-single ui-list-link ui-border-tb">
             <li class="ui-border-t">
-                <div class="ui-list-info">
-                    <h4 class="ui-nowrap">XXXXXX体验反馈</h4>
-                    <p class="ui-nowrap">床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
-                </div>
-                <div class="ui-list-img-square w-us">
-                    已采纳
-                </div>
+                <a href="#">
+                    <div class="ui-list-info">
+                        <i class="iconfont mys-icon">&#xe62f;</i>
+                        <h4 class="ui-nowrap">我的日常体验反馈</h4>
+                    </div>
+                </a>
             </li>
             <li class="ui-border-t">
-                <div class="ui-list-info">
-                    <h4 class="ui-nowrap">XXXXXX体验反馈</h4>
-                    <p class="ui-nowrap">床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
-                </div>
-                <div class="ui-list-img-square w-us">
-                    已采纳
-                </div>
-            </li>
-          </ul>
-        </div>
-
-
-
-        <div class="my-content">
-          <div class="mc-title">待完成的任务</div>
-          <ul class="ui-list ui-list-nospace ui-border-tb" style="display: none;">
-            <li class="ui-border-t">
-                <div class="ui-list-info">
-                    <h4 class="ui-nowrap">XXXXXX体验反馈</h4>
-                    <p class="ui-nowrap">床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
-                </div>
-                <div class="ui-list-img-square w-us text-red">
-                    未完成
-                </div>
+                <a href="#">
+                    <div class="ui-list-info">
+                        <i class="iconfont mys-icon">&#xe635;</i>
+                        <h4 class="ui-nowrap">待完成的任务</h4>
+                    </div>
+                </a>
             </li>
             <li class="ui-border-t">
-                <div class="ui-list-info">
-                    <h4 class="ui-nowrap">XXXXXX体验反馈</h4>
-                    <p class="ui-nowrap">床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
-                </div>
-                <div class="ui-list-img-square w-us text-red">
-                    未完成
-                </div>
-            </li>
-          </ul>
-        </div>
-
-
-
-        <div class="my-content">
-          <div class="mc-title">已完成的任务</div>
-          <ul class="ui-list ui-list-nospace ui-border-tb" style="display: none;">
-            <li class="ui-border-t">
-                <div class="ui-list-info">
-                    <h4 class="ui-nowrap">XXXXXX体验反馈</h4>
-                    <p class="ui-nowrap">床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
-                </div>
-                <div class="ui-list-img-square w-us">
-                    已采纳
-                </div>
+                <a href="#">
+                    <div class="ui-list-info">
+                        <i class="iconfont mys-icon">&#xe6d8;</i>
+                        <h4 class="ui-nowrap">已完成的任务</h4>
+                    </div>
+                </a>
             </li>
             <li class="ui-border-t">
-                <div class="ui-list-info">
-                    <h4 class="ui-nowrap">XXXXXX体验反馈</h4>
-                    <p class="ui-nowrap">床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
-                </div>
-                <div class="ui-list-img-square w-us">
-                    已采纳
-                </div>
+                <a href="#">
+                    <div class="ui-list-info">
+                        <i class="iconfont mys-icon">&#xe629;</i>
+                        <h4 class="ui-nowrap">已过期的任务</h4>
+                    </div>
+                </a>
             </li>
-          </ul>
-        </div>
-        <!-- 列表 -->
+        </ul>
+
 
         <div class="ui-dialog show" id="dialog" style="display: none;">
             <div class="ui-dialog-cnt">
@@ -127,25 +88,7 @@
 
 
         <script src="../js/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
         <script src="../js/delog.js"></script>
-          <script>
-            $(function(){
-              const linkArray = ['my.html', 'myexp.html', 'leaderboard.html'];
-              // 选项卡
-              $('.ui-tab-nav').on('click', 'li', function(e) {
-                // event.preventDefault();
-                // $(this).addClass('current').siblings('.current').removeClass('current')
-                window.location.href = linkArray[$(this).index()]
-              });
-
-              // 列表展示
-              $('.mc-title').on('click', function(event) {
-                event.preventDefault();
-                $(this).toggleClass('mc-t-act').siblings('.ui-list').slideToggle(200);
-              });
-              $('#first').trigger('click')
-
-            })
-          </script>
     </body>
 </html>
